@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+#define forn(n) for (int i = 0; i < n; i++)
+#define pii pair<int,int>
+#define pll pair<long long, long long>
+
+using namespace std;
+
+void solve(){
+    int n, q; cin >> n >> q;
+    string s; cin >> s;
+    int a;
+    bool allA = true;
+    forn (n){
+        if (s[i] == 'B'){
+            allA = false;
+            break;
+        }
+    }
+    
+    int ans = 0;
+    forn (q){
+        ans = 0;
+        cin >> a;
+        if (allA){
+            cout << a;
+        }
+        else{
+            while (a > 0){
+                for (auto c : s){
+                    if (c == 'A'){
+                        a--;
+                    }
+                    else {
+                        a /= 2;
+                    }
+                    ans++;
+                    if (a <= 0){
+                        break;
+                    }
+                }
+            }
+            cout << ans;
+        }
+        cout << '\n';
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int t; cin >> t;
+    forn (t){
+        solve();
+    }
+
+    return 0;
+}
